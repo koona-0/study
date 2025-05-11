@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/controller/books") // 이 컨트롤러의 기본 URL 경로를 "books"로 변경
+@RequestMapping("/api/books") // 이 컨트롤러의 기본 URL 경로를 "books"로 변경
 public class BookController {
 
     private final BookService bookService; // BookService 주입
@@ -20,7 +20,7 @@ public class BookController {
     } 
 
     // 새 Book을 생성하는 엔드포인트 (POST 요청)
-    // 예시: POST http://localhost:8080/controller/books
+    // 예시: POST http://localhost:8080/api/books
     // Body (JSON): { "name": "새 책 제목", "author": "새 책 저자" }
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
@@ -29,7 +29,7 @@ public class BookController {
     }
 
     // 모든 Book을 조회하는 엔드포인트 (GET 요청)
-    // 예시: GET http://localhost:8080/controller/books
+    // 예시: GET http://localhost:8080/api/books
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> books = bookService.getAllBooks();
@@ -37,7 +37,7 @@ public class BookController {
     }
 
     // 특정 ID의 Book을 조회하는 엔드포인트 (GET 요청)
-    // 예시: GET http://localhost:8080/controller/books/60c72b2f3e40b1a1a1a1a1a1 (MongoDB ID)
+    // 예시: GET http://localhost:8080/api/books/60c72b2f3e40b1a1a1a1a1a1 (MongoDB ID)
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable String id) {
         Optional<Book> book = bookService.getBookById(id);
@@ -46,7 +46,7 @@ public class BookController {
     }
 
     // 특정 ID의 Book을 삭제하는 엔드포인트 (DELETE 요청)
-    // 예시: DELETE http://localhost:8080/controller/books/60c72b2f3e40b1a1a1a1a1a1
+    // 예시: DELETE http://localhost:8080/api/books/60c72b2f3e40b1a1a1a1a1a1
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable String id) {
         bookService.deleteBook(id);

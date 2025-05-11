@@ -51,9 +51,11 @@ dependencies {
 	//MongoDB
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	
-	
 	//thymeleaf
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	//JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	
 }
 
